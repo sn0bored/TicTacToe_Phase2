@@ -16,12 +16,19 @@ post '/users' do
 end
 
 post '/login' do
-  #@user = User.find_by_email(params[:email])
-  if @user.password == params[:password]
-    give_token
+  @user = User.find_by_user_name(params[:user_name])
+  p @user
+  p params[:password]
+  if @user
+    erb :lobby
   else
-    redirect_to home_url
+    redirect '/'
   end
+end
+
+get '/logout' do
+  logout
+  redirect '/'
 end
 
 get '/play' do

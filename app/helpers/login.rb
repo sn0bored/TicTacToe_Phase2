@@ -17,7 +17,7 @@ helpers do
   end
 
   def all_users
-    User.order("user_name ASC")
+    User.all
   end
 
 end
