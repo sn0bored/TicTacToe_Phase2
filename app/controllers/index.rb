@@ -10,12 +10,9 @@ get '/lobby' do
 end
 
 post '/users' do
-
-  @user = User.new(params[:user_name])
-  @user.password = params[:password]
+  @user = User.new(user_name: params[:user_name], password: params[:password])
   @user.save!
-
-  # Create User
+  erb :lobby
 end
 
 post '/login' do
